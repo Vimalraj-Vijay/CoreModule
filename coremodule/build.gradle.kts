@@ -48,7 +48,7 @@ publishing {
                 from(components["release"])
                 groupId = "com.github.Vimalraj-Vijay"
                 artifactId = "CoreModule"
-                version = libs.versions.coreModuleDependencyVersion
+                version = "1.0.0"
             }
         }
     }
