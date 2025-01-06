@@ -6,12 +6,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
-import com.vimalraj.coremodule.R
 
 @Composable
 fun GenericAlertDialog(
@@ -19,11 +17,16 @@ fun GenericAlertDialog(
     onConfirmation: () -> Unit,
     dialogTitle: String,
     dialogText: String,
-    icon: ImageVector,
+    confirmText: String = "",
+    dismissText: String = "",
+    icon: ImageVector?,
+    iconColor: Color
 ) {
     AlertDialog(
         icon = {
-            Icon(icon, contentDescription = null, tint = colorResource(R.color.red))
+            if (icon != null) {
+                Icon(icon, contentDescription = null, tint = iconColor)
+            }
         },
         title = {
             Text(text = dialogTitle, fontSize = 22.sp, fontStyle = FontStyle.Normal)
@@ -40,7 +43,7 @@ fun GenericAlertDialog(
                     onConfirmation()
                 }
             ) {
-                Text(stringResource(R.string.confirm))
+                Text(confirmText)
             }
         },
         dismissButton = {
@@ -49,7 +52,7 @@ fun GenericAlertDialog(
                     onDismissRequest()
                 }
             ) {
-                Text(stringResource(R.string.dismiss))
+                Text(dismissText)
             }
         }
     )
