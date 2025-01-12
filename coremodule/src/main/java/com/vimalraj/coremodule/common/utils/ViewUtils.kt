@@ -4,9 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -26,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import com.vimalraj.coremodule.R
 
 @Composable
@@ -120,4 +123,36 @@ fun GenericAlertDialog(
             }
         }
     )
+}
+
+
+@Composable
+fun NoInternetAlertDialog(
+    onDismissRequest: () -> Unit,
+) {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        AlertDialog(
+            modifier = Modifier.fillMaxWidth(0.9f),
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false,
+                decorFitsSystemWindows = true,
+                dismissOnClickOutside = true,
+                dismissOnBackPress = true
+            ),
+            shape = RoundedCornerShape(8.dp),
+            onDismissRequest = {
+                onDismissRequest()
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    onDismissRequest()
+                }) {
+                    Text(text = stringResource(R.string.ok))
+                }
+            },
+            title = {
+                Text(text = stringResource(R.string.no_internet_message), fontSize = 16.sp)
+            },
+        )
+    }
 }
