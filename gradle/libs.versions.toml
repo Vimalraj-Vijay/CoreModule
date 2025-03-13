@@ -1,27 +1,45 @@
 [versions]
 agp = "8.6.1"
+coilCompose = "3.0.4"
+constraintlayoutCompose = "1.1.0"
+converterGson = "2.11.0"
+coremodule = "1.0.2"
+networkmodule = "master-SNAPSHOT"
 kotlin = "1.9.22"
 ksp-version = "1.9.22-1.0.17"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-appcompat = "1.7.0"
-material = "1.12.0"
+lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2024.12.01"
-runtimeAndroid = "1.7.6"
-material3Android = "1.3.1"
-coreModuleDependencyVersion = "0.0.1"
+roomVersion = "2.6.1"
+coroutineVersion = "1.7.3"
+
+#Android
+hilt-version = "2.51.1"
+runtimeLivedata = "1.7.6"
+appcompat = "1.7.0"
+material = "1.12.0"
+workRuntimeKtx = "2.10.0"
+appcompatVersion = "1.7.0"
+materialVersion = "1.12.0"
 
 [libraries]
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -31,12 +49,29 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
-androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-version" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-version" }
+
+
+room = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+room-complier = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+room-kotlin-extension = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutineVersion" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
+
+
+coremodule = { module = "com.github.Vimalraj-Vijay:CoreModule", version.ref = "coremodule" }
+networkmodule = { module = "com.github.Vimalraj-Vijay:NetworkModule", version.ref = "networkmodule" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
